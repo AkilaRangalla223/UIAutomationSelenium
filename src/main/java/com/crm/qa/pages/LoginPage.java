@@ -36,16 +36,19 @@ public class LoginPage extends TestBase{
 	}
 	
 	public boolean validateCRMImage(){
-		return crmLogo.isDisplayed();
+		return waitForElement(crmLogo).isDisplayed();
 	}
 	
 	public HomePage login(String un, String pwd){
 		username.sendKeys(un);
 		password.sendKeys(pwd);
+
 		//loginBtn.click();
-		    	JavascriptExecutor js = (JavascriptExecutor)driver;
-		    	js.executeScript("arguments[0].click();", loginBtn);
-		    	
+//
+//	   	JavascriptExecutor js = (JavascriptExecutor)driver;
+//		js.executeScript("arguments[0].click();", loginBtn);
+
+		waitForElement(loginBtn).click();
 		return new HomePage();
 	}
 	

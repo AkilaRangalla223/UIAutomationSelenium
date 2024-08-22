@@ -7,15 +7,16 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 import com.crm.qa.util.TestUtil;
 import com.crm.qa.util.WebEventListener;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class TestBase {
 	
@@ -69,7 +70,12 @@ public class TestBase {
 		driver.get(prop.getProperty("url"));
 		
 	}
-	
+
+	public WebElement waitForElement(WebElement e){
+		WebDriverWait wait = new WebDriverWait(driver, 20);
+		return wait.until((ExpectedConditions.visibilityOf(e)));
+
+	}
 	
 	
 	
