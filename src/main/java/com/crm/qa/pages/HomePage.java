@@ -45,16 +45,7 @@ public class HomePage extends TestBase {
 		contactsLink.click();
 		return new ContactsPage();
 	}
-	
-	public DealsPage clickOnDealsLink(){
-		dealsLink.click();
-		return new DealsPage();
-	}
-	
-	public TasksPage clickOnTasksLink(){
-		tasksLink.click();
-		return new TasksPage();
-	}
+
 	
 	public void clickOnNewContactLink(){
 		Actions action = new Actions(driver);
