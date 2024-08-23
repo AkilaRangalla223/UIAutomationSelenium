@@ -45,10 +45,10 @@ public class LoginPage extends TestBase{
 
 		//loginBtn.click();
 //
-//	   	JavascriptExecutor js = (JavascriptExecutor)driver;
-//		js.executeScript("arguments[0].click();", loginBtn);
+	   	JavascriptExecutor js = (JavascriptExecutor)driver;
+		js.executeScript("arguments[0].click();", loginBtn);
 
-		waitForElement(loginBtn).click();
+//		waitForElement(loginBtn).click();
 		return new HomePage();
 	}
 	

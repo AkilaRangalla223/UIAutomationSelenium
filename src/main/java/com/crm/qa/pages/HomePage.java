@@ -1,5 +1,6 @@
 package com.crm.qa.pages;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.CacheLookup;
@@ -17,9 +18,11 @@ public class HomePage extends TestBase {
 	@FindBy(xpath = "//a[contains(text(),'Contacts')]")
 	WebElement contactsLink;
 	
-	@FindBy(xpath = "//a[contains(text(),'New Contact')]")
+	@FindBy(xpath = "//a[@title='New Company']")
 	WebElement newContactLink;
-	
+
+	@FindBy(xpath = "//a[contains(text(),'Companies')]")
+	WebElement companiesLink;
 
 	@FindBy(xpath = "//a[contains(text(),'Deals')]")
 	WebElement dealsLink;
@@ -54,7 +57,14 @@ public class HomePage extends TestBase {
 		
 	}
 	
-	
+	public void clickOnNewCompaniesLink(){
+		Actions action = new Actions(driver);
+		action.moveToElement(companiesLink).build().perform();
+		newContactLink.click();
+
+//		JavascriptExecutor js = (JavascriptExecutor)driver;
+//		js.executeScript("arguments[0].click();", newContactLink);
+	}
 	
 	
 	
