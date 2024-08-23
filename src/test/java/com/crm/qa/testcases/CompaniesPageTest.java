@@ -7,6 +7,7 @@ import com.crm.qa.pages.LoginPage;
 import com.crm.qa.util.TestUtil;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class CompaniesPageTest extends TestBase {
@@ -16,6 +17,7 @@ public class CompaniesPageTest extends TestBase {
     TestUtil testUtil;
     CompaniesPage companiesPage;
 
+    String sheetName = "companies";
 
     public CompaniesPageTest(){
         super();
@@ -33,10 +35,17 @@ public class CompaniesPageTest extends TestBase {
         testUtil.switchToFrame();
     }
 
-    @Test(priority=1)
-    public void validateCreateNewCompany() {
+    @DataProvider(name="getCRMTestData")
+    public Object[][] getCRMTestData(){
+        Object data[][] = TestUtil.getTestData(sheetName);
+        return data;
+    }
+
+    @Test(priority=1, dataProvider = "getCRMTestData")
+    public void validateCreateNewCompany(String name, String industry, String employeeCount, String status, String category) {
         homePage.clickOnNewCompaniesLink();
-        companiesPage.createNewCompany("Test Company","IT", "900", "New","Partner");
+//        companiesPage.createNewCompany("Test Company","IT", "900", "New","Partner");
+        companiesPage.createNewCompany(name, industry, employeeCount, status, category);
     }
 
     @AfterMethod
